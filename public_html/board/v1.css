@@ -5,7 +5,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
 }
 
 html {
@@ -28,9 +28,10 @@ body {
         "top"
         "main"
         "bottom";
-    grid-template-rows: calc(var(--button-size) + var(--button-size) / 2.5) 1fr calc(var(--button-size) + var(--button-size) / 2.5);
+    grid-template-rows: calc(var(--button-size) + var(--button-size) * 0.4 + var(--button-size) * 0.075) 1fr calc(var(--button-size) + var(--button-size) * 0.4 + var(--button-size) * 0.075);
 }
 
+/*
 button {
     all: unset;
     display: flex;
@@ -46,6 +47,23 @@ button {
     text-align: center;
     cursor: pointer;
 }
+    */
+
+button {
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--button-size);
+    height: var(--button-size);
+    overflow: hidden;
+    background-color: #ccc;
+    border: calc(var(--button-size) * 0.075) solid black;
+    border-radius: calc(var(--button-size) * 0.2);
+    text-align: center;
+    cursor: pointer;
+}
+
 
 button.pressed {
     /*
@@ -62,6 +80,7 @@ button.pressed {
     grid-area: top;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: calc(var(--button-size) * 0.075) solid black;
 }
 
 .bottom {
@@ -69,6 +88,7 @@ button.pressed {
     grid-area: bottom;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    border-top: calc(var(--button-size) * 0.075) solid black;
 }
 
 .top-left,
@@ -79,7 +99,7 @@ button.pressed {
     display: flex;
     align-items: center;
     gap: calc(var(--button-size) * 0.2);
-    padding: calc(var(--button-size) * 0.2); /* every division should be times! */
+    padding: calc(var(--button-size) * 0.2);
 }
 
 .top-left {
