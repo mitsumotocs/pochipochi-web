@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UI</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #tool {
+            background-color: #ccc;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: calc(48px + 8px * 2);
+            display: flex;
+            padding: 8px;
+            gap: 8px;
+        }
+
+        #tool > span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*background-color: red;*/
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            /*border: 2px solid transparent;*/
+        }
+
+        #tool > span.selected {
+            border: 2px solid #fff;
+        }
+
+        #tool > span > i.dot {
+            display: inline-block;
+            background-color: #000;
+            border-radius: 50%;
+        }
+
+        #tool > span > i.fa-pencil {
+            /*
+            width: 32px;
+            height: 32px;
+            */
+            font-size: 28px;
+        }
+
+    </style>
+    <script src="https://kit.fontawesome.com/92ac308575.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        });
+    </script>
+</head>
+
+<body>
+    <div id="tool">
+        <span><i class="dot" style="width: 32px; height: 32px;"></i></span>
+        <span class="selected"><i class="dot" style="width: 16px; height: 16px;"></i></span>
+        <span><i class="dot" style="width: 8px; height: 8px;"></i></span>
+        <span><i class="fa-solid fa-pencil"></i></span>
+        <span class="selected"><i class="fa-solid fa-pencil"></i></span>
+        <span><i class="fa-solid fa-pencil"></i></span>
+    </div>
+</body>
+
+</html>

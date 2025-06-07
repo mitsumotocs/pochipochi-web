@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>10 Point Multitouch Drawing</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        canvas {
+            display: block;
+            background-color: #ccc;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const canvasElement = document.querySelector("canvas");
+            const canvasContext = canvasElement.getContext("2d");
+            const touches = [];
+            console.log(canvasElement, canvasContext, touches);
+
+            function resizeCanvas() {
+                canvasElement.width = window.innerWidth;
+                canvasElement.height = window.innerHeight;
+            }
+            window.addEventListener("resize", resizeCanvas);
+            resizeCanvas();
+
+            canvasContext.lineCap = "round";
+            canvasContext.lineJoin = "round";
+            canvasContext.lineWidth = 5;
+            canvasContext.strokeStyle = "#000";
+
+            canvasElement.addEventListener("touchstart", (event) => {
+                event.preventDefault();
+                for (const touch of event.changedTouches) {
+                    //console.log(touch.clientX, touch.clientY);
+                    touches[touch.identifier] = {
+                        x: touch.clientX,
+                        y: touch.clientY,
+                    };
+                }
+                console.log(touches);
+            });
+
+            canvasElement.addEventListener("touchend", (event) => {
+                event.preventDefault();
+                for (const touch of event.changedTouches) {
+                    delete touches[touch.identifier];
+                }
+            });
+
+            canvasElement.addEventListener("touchcancel", (event) => {
+                event.preventDefault();
+                for (const touch of event.changedTouches) {
+                    delete touches[touch.identifier];
+                }
+            });
+
+            canvasElement.addEventListener("touchmove", (event) => {
+                event.preventDefault();
+                for (const touch of event.changedTouches) {
+                    const lastTouch = touches[touch.identifier];
+                    if (lastTouch) {
+                        canvasContext.beginPath();
+                        canvasContext.moveTo(lastTouch.x, lastTouch.y);
+                        canvasContext.lineTo(touch.clientX, touch.clientY);
+                        canvasContext.stroke();
+
+                        touches[touch.identifier] = {
+                            x: touch.clientX,
+                            y: touch.clientY,
+                        };
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <canvas></canvas>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+:root {
+    --button-size: 5vw;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1;
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    touch-action: none;
+}
+
+body {
+    display: grid;
+    grid-template-areas:
+        "top"
+        "main"
+        "bottom";
+    grid-template-rows: calc(var(--button-size) + var(--button-size) / 2.5) 1fr calc(var(--button-size) + var(--button-size) / 2.5);
+}
+
+button {
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--button-size);
+    height: calc(var(--button-size) - var(--button-size) / 10);
+    overflow: hidden;
+    padding-bottom: calc(var(--button-size) / 10);
+    background-color: #ccc;
+    border-radius: calc(var(--button-size) / 5);
+    box-shadow: inset 0 calc((var(--button-size) / 10) * -1) 0 0 #333;
+    text-align: center;
+    cursor: pointer;
+}
+
+button.pressed {
+    /*
+                height: calc(100% - var(--thickness) * 2);
+                padding-buttom: unset;
+                background-color: #c0c0c0;
+                box-shadow: unset;
+                transform: translateY(var(--thickness));    
+    */
+}
+
+.top {
+    background-color: #aaa;
+    grid-area: top;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bottom {
+    background-color: #bbb;
+    grid-area: bottom;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.top-left,
+.top-center,
+.top-right,
+.bottom-left,
+.bottom-right {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--button-size) * 0.2);
+    padding: calc(var(--button-size) * 0.2); /* every division should be times! */
+}
+
+.top-left {
+    /*background-color: red;*/
+}
+
+.top-center {
+    /*background-color: green;*/
+    justify-content: center;
+}
+
+.top-right {
+    /*background-color: blue;*/
+    justify-content: flex-end;
+}
+
+.bottom-left {
+    /*background-color: yellow;*/
+}
+
+.bottom-right {
+    /*background-color: purple;*/
+    justify-content: flex-end;
+}
