@@ -64,6 +64,10 @@ button {
     cursor: pointer;
 }
 
+button>i {
+    font-size: calc(var(--button-size) * 0.5);
+}
+
 
 button.pressed {
     /*
@@ -73,6 +77,40 @@ button.pressed {
                 box-shadow: unset;
                 transform: translateY(var(--thickness));    
     */
+}
+
+button.selectable {
+    border-radius: 50%;
+    border-width: 0;
+}
+
+button.selectable.selected {
+    border-width: calc(var(--button-size) * 0.075);
+}
+
+button.size,
+button.color {
+    width: var(--button-size);
+}
+
+button.size[data-size="32px"] > i {
+    font-size: 32px;
+}
+
+button.size[data-size="16px"] > i {
+    font-size: 16px;
+}
+
+button.size[data-size="8px"] > i {
+    font-size: 8px;
+}
+
+button.color > i {
+    font-size: var(--button-size);
+}
+
+button.color[data-color="red"] > i {
+    color: red;
 }
 
 .top {
