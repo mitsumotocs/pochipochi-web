@@ -93,6 +93,7 @@ button.color {
     width: var(--button-size);
 }
 
+/*
 button.size[data-size="32px"] > i {
     font-size: 32px;
 }
@@ -104,14 +105,17 @@ button.size[data-size="16px"] > i {
 button.size[data-size="8px"] > i {
     font-size: 8px;
 }
+*/
 
 button.color > i {
     font-size: var(--button-size);
 }
 
+/*
 button.color[data-color="red"] > i {
     color: red;
 }
+*/
 
 .top {
     background-color: #aaa;
