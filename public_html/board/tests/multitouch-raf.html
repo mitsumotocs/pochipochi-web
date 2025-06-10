@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>10 Point Multitouch Drawing with RequestAnimationFrame</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        canvas {
+            display: block;
+            background-color: #ccc;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const canvasElement = document.querySelector("canvas");
+            const canvasContext = canvasElement.getContext("2d");
+            //console.log(canvasElement, canvasContext);
+
+            function resizeCanvas() {
+                canvasElement.width = window.innerWidth;
+                canvasElement.height = window.innerHeight;
+            }
+            window.addEventListener("resize", resizeCanvas);
+            resizeCanvas();
+
+            canvasContext.lineCap = "round";
+            canvasContext.lineJoin = "round";
+            canvasContext.lineWidth = 5;
+            canvasContext.strokeStyle = "#000";
+
+            const touches = new Map();
+            let needsRedraw = false;
+
+            canvasElement.addEventListener("pointerdown", (event) => {
+                if (!event.pointerType) return;
+
+                touches.set(event.pointerId, [
+                    {
+                        x: event.offsetX,
+                        y: event.offsetY,
+                    },
+                ]);
+                needsRedraw = true;
+                //console.log(touches);
+            });
+
+            canvasElement.addEventListener("pointermove", (event) => {
+                if (!touches.has(event.pointerId)) return;
+
+                touches.get(event.pointerId).push([
+                    {
+                        x: event.offsetX,
+                        y: event.offsetY,
+                    },
+                ]);
+                needsRedraw = true;
+            });
+
+            const removeTouch = (event) => {
+                touches.delete(event.pointerId);
+            };
+            canvasElement.addEventListener("pointerup", removeTouch);
+            canvasElement.addEventListener("pointercancel", removeTouch);
+            canvasElement.addEventListener("pointerout", removeTouch);
+            canvasElement.addEventListener("pointerleave", removeTouch);
+
+            function draw() {
+                for (const points of touches.values()) {
+                    if (points.length < 2) continue;
+                    canvasContext.beginPath();
+                    for (let i = 1; i < points.length; i++) {
+                        const p1 = points[i - 1];
+                        const p2 = points[i];
+                        canvasContext.moveTo(p1.x, p1.y);
+                        canvasContext.lineTo(p2.x, p2.y);
+                    }
+                    canvasContext.stroke();
+                    const last = points[points.length - 1];
+                    points.length = 0;
+                    points.push(last);
+                }
+            }
+
+            function loop() {
+                if (needsRedraw) {
+                    draw();
+                    needsRedraw = false;
+                }
+                requestAnimationFrame(loop);
+                //console.log(touches);
+            }
+
+            requestAnimationFrame(loop);
+        });
+    </script>
+</head>
+
+<body>
+    <canvas></canvas>
+</body>
+
+</html>
