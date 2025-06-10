@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pointer Events</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            touch-action: none;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.addEventListener("pointerdown", (event) => {
+                console.log(`pointerType: ${event.pointerType} / pointerId: ${event.pointerId} / X: ${event.clientX} / Y: ${event.clientY}`);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <canvas></canvas>
+</body>
+
+</html>

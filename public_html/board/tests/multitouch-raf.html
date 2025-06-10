@@ -43,6 +43,7 @@
             let needsRedraw = false;
 
             canvasElement.addEventListener("pointerdown", (event) => {
+                console.log(event.pointerType);
                 if (!event.pointerType) return;
 
                 touches.set(event.pointerId, [
@@ -65,18 +66,21 @@
                     },
                 ]);
                 needsRedraw = true;
+                //console.log(touches);
             });
 
             const removeTouch = (event) => {
                 touches.delete(event.pointerId);
+                //console.log(touches);
             };
             canvasElement.addEventListener("pointerup", removeTouch);
             canvasElement.addEventListener("pointercancel", removeTouch);
             canvasElement.addEventListener("pointerout", removeTouch);
             canvasElement.addEventListener("pointerleave", removeTouch);
 
-            function draw() {
+            function _draw() {
                 for (const points of touches.values()) {
+                    //console.log(points);
                     if (points.length < 2) continue;
                     canvasContext.beginPath();
                     for (let i = 1; i < points.length; i++) {
@@ -92,6 +96,34 @@
                 }
             }
 
+            function draw() {
+                //console.log(needsRedraw);
+                if (!needsRedraw) return;
+
+                for (const points of touches.values()) {
+                    if (points.length < 2) continue;
+                    canvasContext.beginPath();
+                    for (let i = 1; i < points.length; i++) {
+                        const p1 = points[i - 1];
+                        const p2 = points[i];
+                        canvasContext.moveTo(p1.x, p1.y);
+                        canvasContext.lineTo(p2.x, p2.y);
+                    }
+                    canvasContext.stroke();
+
+                    /*
+                    const last = points[points.length - 1];
+                    points.length = 0;
+                    points.push(last);
+                    */
+
+                }
+
+                needsRedraw = false;
+
+            }
+
+            /*
             function loop() {
                 if (needsRedraw) {
                     draw();
@@ -99,6 +131,13 @@
                 }
                 requestAnimationFrame(loop);
                 //console.log(touches);
+            }
+
+            requestAnimationFrame(loop);
+            */
+            function loop() {
+                draw();
+                requestAnimationFrame(loop);
             }
 
             requestAnimationFrame(loop);
