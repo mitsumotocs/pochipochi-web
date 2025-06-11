@@ -7,10 +7,12 @@
     <link href="./v1.css" rel="stylesheet">
     <title>Board v1</title>
     <script src="https://kit.fontawesome.com/92ac308575.js" crossorigin="anonymous"></script>
+    <script src="./v1.js" defer></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const canvasElement = document.querySelector("main>canvas");
             const canvasContext = canvasElement.getContext("2d");
+            /*
 
             function resize() {
                 canvasElement.width = window.innerWidth;
@@ -53,7 +55,9 @@
                 canvasContext.lineTo(x2, y2);
                 canvasContext.stroke();
             }
+                */
         });
+
 
 
     </script>
@@ -77,9 +81,9 @@
     </div>
     <div class="bottom">
         <div class="bottom-left">
-            <button type="button" class="selectable selected size" data-size="32px"><i
+            <button type="button" class="selectable size" data-size="32px"><i
                     class="fa-solid fa-circle"></i></button>
-            <button type="button" class="selectable size" data-size="16px"><i class="fa-solid fa-circle"></i></button>
+            <button type="button" class="selectable selected size" data-size="16px"><i class="fa-solid fa-circle"></i></button>
             <button type="button" class="selectable size" data-size="8px"><i class="fa-solid fa-circle"></i></button>
         </div>
         <div class="bottom-right">

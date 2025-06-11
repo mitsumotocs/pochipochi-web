@@ -24,11 +24,18 @@ body {
 
 body {
     display: grid;
+/*    
     grid-template-areas:
         "top"
         "main"
         "bottom";
     grid-template-rows: calc(var(--button-size) + var(--button-size) * 0.4 + var(--button-size) * 0.075) 1fr calc(var(--button-size) + var(--button-size) * 0.4 + var(--button-size) * 0.075);
+    */
+    grid-template-areas:
+        "main"
+        "bottom";
+    grid-template-rows: 1fr calc(var(--button-size) + var(--button-size) * 0.4 + var(--button-size) * 0.075);
+    background-color: #222;
 }
 
 main {
@@ -50,8 +57,8 @@ button {
     min-width: var(--button-size);
     height: var(--button-size);
     overflow: hidden;
-    background-color: #ccc;
-    border: calc(var(--button-size) * 0.075) solid black;
+    background-color: transparent;
+    border: calc(var(--button-size) * 0.075) solid #000;
     border-radius: calc(var(--button-size) * 0.2);
     text-align: center;
     cursor: pointer;
@@ -76,23 +83,24 @@ button.color {
 }
 
 button.color>i {
-    font-size: var(--button-size);
+    font-size: calc(var(--button-size) * 2);
 }
 
 .top {
+    display: none;
+    /*display: grid;*/
     background-color: #aaa;
     grid-area: top;
-    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     border-bottom: calc(var(--button-size) * 0.075) solid black;
 }
 
 .bottom {
-    background-color: #bbb;
+    background-color: #fff;
     grid-area: bottom;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-top: calc(var(--button-size) * 0.075) solid black;
+    border-top: calc(var(--button-size) * 0.075) solid #fff;
 }
 
 .top-left,
