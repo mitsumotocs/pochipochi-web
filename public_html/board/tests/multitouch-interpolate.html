@@ -23,6 +23,24 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            function interpolate(p1, p2, spacing = 4) {
+                const dx = p2.x - p1.x;
+                const dy = p2.y - p1.y;
+                const dist = Math.hypot(dx, dy);
+                const steps = Math.floor(dist / spacing);
+                const points = [];
+                for (let i = 1; i < steps; i++) {
+                    const t = i / steps;
+                    points.push({
+                        x: p1.x + dx * t,
+                        y: p1.y + dy * t
+                    });
+                }
+                return points;
+            }
+            //console.log(interpolate({ x: 0, y: 0 }, { x: 100, y: 100 }, 100));
+            console.log(document.querySelector("select").value);
+
             const canvasElement = document.querySelector("canvas");
             const canvasContext = canvasElement.getContext("2d");
             //console.log(canvasElement, canvasContext);
@@ -50,7 +68,17 @@
 
             canvasElement.addEventListener("pointermove", (event) => {
                 if (!pointers.has(event.pointerId)) return;
-                pointers.get(event.pointerId).push({ x: event.offsetX, y: event.offsetY });
+                //pointers.get(event.pointerId).push({ x: event.offsetX, y: event.offsetY });
+
+                const points = pointers.get(event.pointerId);
+                const previousPoints = pointers.get(event.pointerId).at(-1);
+                const currentPoints = { x: event.offsetX, y: event.offsetY };
+                //const newPoints = interpolate(previousPoints, currentPoints, 20);
+                const newPoints = interpolate(previousPoints, currentPoints, document.querySelector("select").value);
+                newPoints.push(currentPoints);
+                points.push(...newPoints);
+                console.log(points.length);
+
                 needsRedraw = true;
             });
 
@@ -98,6 +126,13 @@
 
 <body>
     <canvas></canvas>
+    <label style="position: fixed; top: 0; left: 0;">SMOOTHING: <select>
+            <option>2</option>
+            <option>8</option>
+            <option>16</option>
+            <option>32</option>
+        </select>
+    </label>
 </body>
 
 </html>
