@@ -35,7 +35,7 @@ body {
         "main"
         "bottom";
     grid-template-rows: 1fr calc(var(--button-size) + var(--button-size) * 0.4 + var(--button-size) * 0.075);
-    background-color: #222;
+    background-color: #fff;
 }
 
 main {
