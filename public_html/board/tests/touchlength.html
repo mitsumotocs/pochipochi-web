@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detectable Touch Length</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            touch-action: none;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.addEventListener("touchstart", (event) => {
+                console.log(event.type, event.touches.length);
+            });
+
+            document.body.addEventListener("touchmove", (event) => {
+                console.log(event.type, event.touches.length);
+            });
+
+            document.body.addEventListener("touchend", (event) => {
+                console.log(event.type, event.touches.length);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <canvas></canvas>
+</body>
+
+</html>
