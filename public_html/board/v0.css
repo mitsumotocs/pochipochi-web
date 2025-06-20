@@ -2,20 +2,6 @@
     --button-size: 5vw;
 }
 
-/*
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box !important;
-}
-
-html {
-    font-family: sans-serif;
-    font-size: 16px;
-    line-height: 1;
-}
-*/
-
 html,
 body {
     width: 100vw;
@@ -26,18 +12,11 @@ body {
 
 body {
     display: grid;
-/*    
     grid-template-areas:
         "top"
-        "main"
-        "bottom";
-    grid-template-rows: calc(var(--button-size) + var(--button-size) * 0.4 + var(--button-size) * 0.075) 1fr calc(var(--button-size) + var(--button-size) * 0.4 + var(--button-size) * 0.075);
-    */
-    grid-template-areas:
-        "main"
-        "bottom";
-    grid-template-rows: 1fr calc(var(--button-size) + var(--button-size) * 0.4 + var(--button-size) * 0.075);
-    background-color: #fff;
+        "main";
+    grid-template-rows: calc(var(--button-size) + var(--button-size) * 0.4 + var(--button-size) * 0.075) 1fr;
+    background-color: #000;
 }
 
 main {
@@ -61,7 +40,8 @@ button {
     height: var(--button-size);
     overflow: hidden;
     background-color: transparent;
-    border: calc(var(--button-size) * 0.075) solid #000;
+    color: #fff;
+    border: calc(var(--button-size) * 0.075) solid #fff;
     border-radius: calc(var(--button-size) * 0.2);
     text-align: center;
     cursor: pointer;
@@ -90,27 +70,20 @@ button.color>i {
 }
 
 .top {
-    display: none;
-    /*display: grid;*/
-    background-color: #aaa;
+    display: grid;
+    background-color: #000;
     grid-area: top;
     grid-template-columns: 1fr 1fr 1fr;
-    border-bottom: calc(var(--button-size) * 0.075) solid black;
+    border-bottom: calc(var(--button-size) * 0.075) solid #fff;
 }
 
 .bottom {
-    background-color: #fff;
-    grid-area: bottom;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: calc(var(--button-size) * 0.075) solid #fff;
+    display: none;
 }
 
 .top-left,
 .top-center,
-.top-right,
-.bottom-left,
-.bottom-right {
+.top-right {
     display: flex;
     align-items: center;
     gap: calc(var(--button-size) * 0.2);
@@ -128,15 +101,6 @@ button.color>i {
 
 .top-right {
     /*background-color: blue;*/
-    justify-content: flex-end;
-}
-
-.bottom-left {
-    /*background-color: yellow;*/
-}
-
-.bottom-right {
-    /*background-color: purple;*/
     justify-content: flex-end;
 }
 

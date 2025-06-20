@@ -5,63 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../libs/reset.css" rel="stylesheet">
-    <link href="./v1.css" rel="stylesheet">
-    <title>Board v1</title>
+    <link href="./v0.css" rel="stylesheet">
+    <title>Board v0</title>
     <script src="https://kit.fontawesome.com/92ac308575.js" crossorigin="anonymous"></script>
-    <script src="./v1.js" defer></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const canvasElement = document.querySelector("main>canvas");
-            const canvasContext = canvasElement.getContext("2d");
-            /*
-
-            function resize() {
-                canvasElement.width = window.innerWidth;
-                canvasElement.height = window.innerHeight;
-            }
-            window.addEventListener("resize", resize);
-            resize();
-
-            canvasContext.lineWidth = 3;
-            canvasContext.lineWidth = "round";
-            canvasContext.strokeStyle = "#000";
-            console.log(canvasContext);
-
-            let isDrawing = false;
-            let lastX = 0, lastY = 0;
-            let needsRedraw = false;
-
-            canvasElement.addEventListener("pointerdown", (event) => {
-                isDrawing = true;
-                lastX = event.offsetX;
-                lastY = event.offsetY;
-            });
-
-            canvasElement.addEventListener("pointermove", (event) => {
-                if (!isDrawing) return;
-
-                const x = event.offsetX;
-                const y = event.offsetY;
-                drawLine(lastX, lastY, x, y);
-                lastX = x;
-                lastY = y;
-            });
-
-            canvasElement.addEventListener("pointerup", () => isDrawing = false);
-            canvasElement.addEventListener("pointerout", () => isDrawing = false);
-
-            function drawLine(x1, y1, x2, y2) {
-                canvasContext.beginPath();
-                canvasContext.moveTo(x1, y1);
-                canvasContext.lineTo(x2, y2);
-                canvasContext.stroke();
-            }
-                */
-        });
-
-
-
-    </script>
+    <script src="./v0.js" defer></script>
 </head>
 
 <body>
@@ -71,13 +18,13 @@
     <div class="top">
         <div class="top-left">
             <button type="button"><i class="fa-regular fa-file"></i></button>
-            <button type="button"><i class="fa-solid fa-grid-2"></i></button>
+            <!--<button type="button"><i class="fa-solid fa-grid-2"></i></button>-->
         </div>
         <div class="top-center">
             <div class="clock">12:34</div>
         </div>
         <div class="top-right">
-            <button type="button"><i class="fa-regular fa-trash-xmark"></i></button>
+            <!--<button type="button"><i class="fa-regular fa-trash-xmark"></i></button>-->
         </div>
     </div>
     <div class="bottom">
