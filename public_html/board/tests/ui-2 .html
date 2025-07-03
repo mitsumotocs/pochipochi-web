@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../libs/reset.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>UI</title>
+    <style>
+        button {
+            all: unset;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: var(--button-size);
+            height: var(--button-size);
+            overflow: hidden;
+            background-color: transparent;
+            color: #000;
+            border: calc(var(--button-size) * 0.075) solid #fff;
+            border-radius: calc(var(--button-size) * 0.2);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tools {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+        }
+
+        /*
+        .tools button {
+            background-color: #ccc;
+            width: 1rem;
+            height: 1rem;
+        }
+        */
+
+        .tool {
+            padding: 1rem 0;
+            background-color: #eee;
+            border: 1px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        });
+    </script>
+</head>
+
+<body>
+    <div class="tools">
+        <!--https://www.schemecolor.com/balance-chart.php-->
+        <div class="tool">
+            <button type="button"><i class="bi bi-pencil-fill" style="color: #253031; font-size: 2rem;"></i></button>
+        </div>
+        <div class="tool">
+            <button type="button"><i class="bi bi-pencil-fill" style="color: #017AC9;"></i></button>
+        </div>
+        <div class="tool">
+            <button type="button"><i class="bi bi-pencil-fill" style="color: #D43A3A;"></i></button>
+        </div>
+        <div class="tool">
+            <button type="button"><i class="bi bi-pencil-fill" style="color: #FD7B0A;"></i></button>
+        </div>
+        <div class="tool">
+            <button type="button"><i class="bi bi-pencil-fill" style="color: #EDEE55;"></i></button>
+        </div>
+        <div class="tool">
+            <button type="button"><i class="bi bi-pencil-fill" style="color: #63A92D;"></i></button>
+        </div>
+        <div class="tool">
+            <button type="button"><i class="bi bi-pencil-fill" style="color: #6C4BA4;"></i></button>
+        </div>
+        <div class="tool">
+            <button type="button"><i class="bi bi-pencil-fill" style="color: #f8c7cc;"></i></button>
+        </div>
+        <div class="tool">
+            <button type="button"><i class="bi bi-eraser-fill"></i></button>
+        </div>
+        <div class="tool">
+            <button type="button"><i class="bi bi-snow2"></i></button>
+        </div>
+    </div>
+
+</body>
+
+</html>
