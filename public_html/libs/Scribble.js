@@ -1,5 +1,9 @@
 export class Scribble {
-    static DEFAULT_OPTIONS = {};
+    static DEFAULT_OPTIONS = {
+        someFlag: true,
+        anotherFlag: true,
+    };
+    options = {};
 
     canvasElement;
     canvasContext;
@@ -19,6 +23,9 @@ export class Scribble {
 
 
     constructor(canvasElement, options = {}) {
+        this.options = { ...Scribble.DEFAULT_OPTIONS, ...options };
+        console.log(this.options);
+
         this.canvasElement = canvasElement;
         this.canvasContext = this.canvasElement.getContext("2d");
         //console.log(this.canvasElement, this.canvasContext);
@@ -47,7 +54,8 @@ export class Scribble {
     enable() {
         for (const [element, eventHandlers] of this.eventHandlers) {
             for (const eventHandler of eventHandlers) {
-                element.addEventListener(eventHandler[0], eventHandler[1]);
+                const [type, listener] = eventHandler;
+                element.addEventListener(type, listener);
             }
         }
 
@@ -59,7 +67,8 @@ export class Scribble {
     disable() {
         for (const [element, eventHandlers] of this.eventHandlers) {
             for (const eventHandler of eventHandlers) {
-                element.removeEventListener(eventHandler[0], eventHandler[1]);
+                const [type, listener] = eventHandler;
+                element.removeEventListener(type, listener);
             }
         }
 
