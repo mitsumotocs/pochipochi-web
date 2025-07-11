@@ -7,11 +7,26 @@
     <link href="../../libs/reset.css" rel="stylesheet">
     <title>The Scribble Class</title>
     <style>
+        html,
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            touch-action: none;
+        }
+
         canvas {
             display: block;
             background-color: #ccc;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
+        }
+
+        #debug {
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: .5rem;
         }
     </style>
     <script type="module">
@@ -21,12 +36,24 @@
             //console.log(Scribble);
             const scribble = new Scribble(document.querySelector("canvas"));
             console.log(scribble);
+
+            const debugButtons = document.getElementById("debug").querySelectorAll("button");
+            debugButtons.item(0).addEventListener("click", () => {
+                scribble.enable();
+            });
+            debugButtons.item(1).addEventListener("click", () => {
+                scribble.disable();
+            });
         });
     </script>
 </head>
 
 <body>
     <canvas></canvas>
+    <div id="debug">
+        <button type="button">enable</button>
+        <button type="button">disable</button>
+    </div>
 </body>
 
 </html>

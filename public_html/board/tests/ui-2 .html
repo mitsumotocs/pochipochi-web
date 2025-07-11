@@ -31,21 +31,46 @@
             grid-template-rows: repeat(1, 1fr);
         }
 
-        /*
+        .tools > * {
+            /*border: 1px dotted blue;*/
+        }
+
+            /*
         .tools button {
             background-color: #ccc;
             width: 1rem;
             height: 1rem;
         }
-        */
+            */
 
         .tool {
             padding: 1rem 0;
+            /*
             background-color: #eee;
             border: 1px dashed #ccc;
+            */
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .tools2 {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+        }
+
+        .tools2 > button {
+            margin: calc((10vw - 2rem) / 2);
+            width: 2rem;
+            height: 2rem;
+            /*aspect-ratio: 1 / 1;*/
+            border-radius: 50%;
+            border: 2px solid black;
+        }
+
+        .tools2 > button > i {
+            display: inline-block;
         }
     </style>
     <script>
@@ -88,7 +113,18 @@
             <button type="button"><i class="bi bi-snow2"></i></button>
         </div>
     </div>
-
+    <div class="tools2">
+        <button type="button"><i class="bi bi-pencil-fill"></i></button>
+        <button type="button"><i class="bi bi-pencil-fill"></i></button>
+        <button type="button"><i class="bi bi-pencil-fill"></i></button>
+        <button type="button"><i class="bi bi-pencil-fill"></i></button>
+        <button type="button"><i class="bi bi-pencil-fill"></i></button>
+        <button type="button"><i class="bi bi-pencil-fill"></i></button>
+        <button type="button"><i class="bi bi-pencil-fill"></i></button>
+        <button type="button"><i class="bi bi-pencil-fill"></i></button>
+        <button type="button"><i class="bi bi-pencil-fill"></i></button>
+        <button type="button"><i class="bi bi-pencil-fill"></i></button>
+    </div>
 </body>
 
 </html>
